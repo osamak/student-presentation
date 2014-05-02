@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>عرض الافتتاح</title>
+    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+    <!--<link href='https://fonts.googleapis.com/css?family=Orbitron:700' rel='stylesheet' type='text/css'>
+    <link href="http://openfontlibrary.org/face/droid-arabic-naskh" rel="stylesheet" type="text/css">-->
+    <link href='http://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/earlyaccess/amiri.css' rel='stylesheet' type='text/css'>
+    <link href="css/animate.min.css" rel="stylesheet" type="text/css">
+    <style>
+body {
+    /*font-family: "Droid Arabic Naskh",serif;*/
+    font-family: 'Amiri', serif;
+    background-color: rgb(233, 225, 71);
+}
+p {
+    width:1000px;
+    font-size:80px;
+    text-align:center;
+}
+.center {
+    text-align:center;
+}
+.counter {
+    display: none;
+    padding-bottom: 200px;
+    margin-bottom: 0;
+    font-size: 200px;
+    font-family: 'Love Ya Like A Sister', cursive;
+}
+.counter-text {
+   display: none;
+   padding: 0;
+   margin-top: 0;
+}
+    </style>
+    <script type="text/javascript">
+$(function() {
+    $(window).bind( 'hashchange', function(e) { 
+    var anchor = document.location.hash;
+            // In the fourth slide, we have the activity counter.
+            if( anchor === '#/activity-slide' ) {
+               $("#activity-counter").show(); // It's hidden by default.
+               var amount=400; // The number of activities
+               $({c:0}).animate({c:amount}, { 
+                    step: function(now) {
+                        $("#activity-counter").text(Math.round(now))
+                    },
+                    duration: 3000, // The counter should finish in seconds.
+                    easing: "linear",
+                    complete: function() {$("#activity-counter").css('padding-bottom','0');$("#activity-text").show();$('#activity-text').addClass('animated bounceInRight');} // Run this when the animation is finished.
+                });
+            }
+            else if( anchor === '#/email-slide' ) {
+               $("#email-counter").show(); // It's hidden by default.
+               var amount=9000; // The number of activities
+               $({c:0}).animate({c:amount}, { 
+                    step: function(now) {
+                        $("#email-counter").text(Math.round(now))
+                    },
+                    duration: 3000, // The counter should finish in seconds.
+                    easing: "linear",
+                    complete: function() {$("#email-counter").css('padding-bottom','0');$("#email-text").show();$('#email-text').addClass('animated bounceInRight');} // Run this when the animation is finished.
+                });
+            }
+    });
+});
+
+    </script>
+    </head>
+  <body>
+    <div id="impress">
+      <div id="first-slide" class="step"><bdi>
+        <p>نادي الطلاب في نمو!</p>
+        <!--صورة سهم صاعد-->
+      </bdi></div>
+      <div id='activity-slide' class="step" data-x="1400" data-rotate="100" data-scale="0.2"><bdi>
+        <p id="activity-counter" class="counter"></p>
+         <p  id="activity-text" class="counter-text">نشاط</p>
+      </bdi></div>
+      <div id='email-slide' class="step" data-x="2800" data-y="-1600" data-rotate="100" data-scale="0.2"><bdi>
+        <p id="email-counter" class="counter"></p>
+         <p  id="email-text" class="counter-text">بريد</p>
+      </bdi></div>
+      <div class="step"><bdi>
+          شريحة رابعة
+      </bdi></div>
+    </div>
+    <script type="text/javascript" src="js/impress_ar.js"></script>
+    <script type="text/javascript">impress().init();</script>
+
+  </body>
+</html>
